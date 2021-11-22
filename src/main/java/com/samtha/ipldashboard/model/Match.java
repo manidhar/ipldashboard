@@ -9,7 +9,7 @@ import javax.persistence.Id;
 public class Match {
 	
 	@Id
-	private Long id;
+	private long id;
 	private String city;
 	private LocalDate date;
 	private String manOftheMatch;
@@ -27,10 +27,10 @@ public class Match {
 	private String umpire1;
 	private String umpire2;
 	
-	public Long getId() {
+	public long getId() {
 		return id;
 	}
-	public void setId(Long id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 	public String getCity() {

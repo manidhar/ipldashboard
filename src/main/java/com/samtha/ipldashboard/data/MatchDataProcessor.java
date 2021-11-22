@@ -37,8 +37,8 @@ public class MatchDataProcessor implements ItemProcessor<MatchInput, Match>{
 	    	secondInningsTeam=matchInput.getToss_winner();
 	    	firstInningsTeam=matchInput.getToss_winner().equals(matchInput.getTeam1())?matchInput.getTeam2():matchInput.getTeam1();
 	    }
-	    match.setTeam1(firstInningsTeam);
-	    match.setTeam2(secondInningsTeam);
+	    match.setTeam1(getTeamName(firstInningsTeam));
+	    match.setTeam2(getTeamName(secondInningsTeam));
 	    match.setTossDecision(matchInput.getToss_decision());
 	    match.setTossWinner(match.getTossWinner());
 	    match.setEleminator(matchInput.getEleminator());
@@ -47,8 +47,21 @@ public class MatchDataProcessor implements ItemProcessor<MatchInput, Match>{
 	    match.setResult(matchInput.getResult());
 	    match.setResultMargin(matchInput.getResult_margin());
 	    match.setWinMethod(matchInput.getMethod());
-	    
-
+	    match.setMatchWinner(matchInput.getWinner());
 	    return match;
+	  }
+	  
+	  private String getTeamName(String teamName) {
+		  String result=teamName;
+		  if("Delhi Daredevils".equals(teamName)) {
+			  result="Delhi Capitals";
+		  }else if("Deccan Chargers".equals(teamName)) {
+			  result="Sunrisers Hyderabad";
+		  }else if("Pune Warriors".equals(teamName)) {
+			  result="Rising Pune Supergiants";
+		  }else if("Pune Warriors".equals(teamName)) {
+			  result="Rising Pune Supergiants";
+		  }
+		  return result;
 	  }
 }
