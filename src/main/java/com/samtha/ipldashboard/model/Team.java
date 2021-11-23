@@ -1,9 +1,12 @@
 package com.samtha.ipldashboard.model;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Transient;
 
 @Entity
 public class Team {
@@ -15,7 +18,15 @@ public class Team {
 	private long totalMatches;
 	private long totalWins;
 	private long tie;
+	@Transient
+	private List<Match> matches;
 	
+	public List<Match> getMatches() {
+		return matches;
+	}
+	public void setMatches(List<Match> matches) {
+		this.matches = matches;
+	}
 	public Team(String teamName, long totalMatches) {
 		super();
 		this.teamName = teamName;
@@ -54,6 +65,11 @@ public class Team {
 	@Override
 	public String toString() {
 		return "Team [teamName=" + teamName + ", totalMatches=" + totalMatches + ", totalWins=" + totalWins + "]";
+	}
+
+	public Team() {
+		super();
+		
 	}
 	
 

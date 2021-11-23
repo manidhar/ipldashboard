@@ -28,7 +28,8 @@ public class MatchDataProcessor implements ItemProcessor<MatchInput, Match>{
 	    // Making sure that team1 is the team which plays first innings and team 2 always plays the second innings. According we will set the team 1 and team2
 	    // We will be reorder the teams based on toss results
 	    
-	    String firstInningsTeam,secondInningsTeam;
+	    String firstInningsTeam;
+	    String secondInningsTeam;
 	    
 	    if("bat".equals(matchInput.getToss_decision())) {
 	    	firstInningsTeam=matchInput.getToss_winner();
@@ -40,7 +41,7 @@ public class MatchDataProcessor implements ItemProcessor<MatchInput, Match>{
 	    match.setTeam1(getTeamName(firstInningsTeam));
 	    match.setTeam2(getTeamName(secondInningsTeam));
 	    match.setTossDecision(matchInput.getToss_decision());
-	    match.setTossWinner(match.getTossWinner());
+	    match.setTossWinner(matchInput.getToss_winner());
 	    match.setEleminator(matchInput.getEleminator());
 	    match.setUmpire1(matchInput.getUmpire1());
 	    match.setUmpire2(matchInput.getUmpire2());
@@ -57,8 +58,6 @@ public class MatchDataProcessor implements ItemProcessor<MatchInput, Match>{
 			  result="Delhi Capitals";
 		  }else if("Deccan Chargers".equals(teamName)) {
 			  result="Sunrisers Hyderabad";
-		  }else if("Pune Warriors".equals(teamName)) {
-			  result="Rising Pune Supergiants";
 		  }else if("Pune Warriors".equals(teamName)) {
 			  result="Rising Pune Supergiants";
 		  }
